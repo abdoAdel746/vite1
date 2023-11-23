@@ -26,6 +26,7 @@ import { DragHandleIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { Context, useContext } from "../context/Context";
 
 import Cart from "./Cart";
+import { FaCartShopping } from "react-icons/fa6";
 
 export default function Nav() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -43,7 +44,7 @@ export default function Nav() {
             <Stack direction={"row"} spacing={7}>
               <Popover>
                 <PopoverTrigger>
-                  <Button variant={"ghost"} leftIcon={<DragHandleIcon />}>
+                  <Button variant={"ghost"} leftIcon={<FaCartShopping />}>
                     Cart
                   </Button>
                 </PopoverTrigger>
