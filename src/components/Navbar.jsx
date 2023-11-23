@@ -14,9 +14,6 @@ import {
   Stack,
   useColorMode,
   Center,
-  IconButton,
-  Image,
-  Input,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -25,18 +22,15 @@ import {
   PopoverBody,
   PopoverFooter,
 } from "@chakra-ui/react";
-import {
-  DragHandleIcon,
-  MinusIcon,
-  AddIcon,
-  CloseIcon,
-  MoonIcon,
-  SunIcon,
-} from "@chakra-ui/icons";
+import { DragHandleIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { Context, useContext } from "../context/Context";
+
 import Cart from "./Cart";
 
 export default function Nav() {
   const { colorMode, toggleColorMode } = useColorMode();
+
+  const { cartItemCount,cartItemTotalPrice } = useContext(Context);
 
   return (
     <>
@@ -62,9 +56,16 @@ export default function Nav() {
                     </Flex>
                   </PopoverBody>
                   <PopoverFooter>
-                    <Button size="sm" colorScheme="teal" isFullWidth>
-                      Checkout
-                    </Button>
+                    <Flex
+                      direction="row"
+                      align={"center"}
+                      justifyContent={"space-between"}
+                    >
+                      <Text>the total item is {cartItemCount} and total quantitu is {cartItemTotalPrice}$</Text>
+                      <Button size="sm" colorScheme="teal" isFullWidth>
+                        Checkout
+                      </Button>
+                    </Flex>
                   </PopoverFooter>
                 </PopoverContent>
               </Popover>

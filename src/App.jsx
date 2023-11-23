@@ -19,46 +19,14 @@ import {
   ListItem,
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
-// import { Route, NavLink, Router, Routes } from "react-router-dom";
 import List from "./components/List";
 import Cart from "./components/Cart";
 import NavBar from "./components/Navbar";
 import { Context } from "./context/Context";
 import { data } from "./data";
-import { Route, NavLink } from 'react-router-dom';
-
+import { Route, NavLink } from "react-router-dom";
 
 function App() {
-  // const products = [
-  //   {
-  //     id: 1,
-  //     img_src: "/assets/images/d.png",
-  //     name: "man hoodie",
-  //     describtion: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Eumearum commodi`,
-  //     size: "s",
-  //     price: "500",
-  //     type: "white",
-  //   },
-  //   {
-  //     id: 2,
-  //     img_src: "/assets/images/w.png",
-  //     name: "man jaecket",
-  //     describtion: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Eumearum commodi`,
-  //     size: "m",
-  //     price: "200",
-  //     type: "black",
-  //   },
-  //   {
-  //     id: 3,
-  //     img_src: "/assets/images/d.png",
-  //     name: "white hoodie",
-  //     describtion: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Eumearum commodi`,
-  //     size: "l",
-  //     price: "100",
-  //     type: "white",
-  //   },
-  // ];
-
   const [state, setState] = useState({
     data: data,
     cart: [],
@@ -111,17 +79,26 @@ function App() {
     0
   );
 
+  const cartItemTotalPrice = state.cart.reduce(
+    (acc, data) => (acc += data.price * data.count),
+    0
+  );
+
   return (
     <>
-      {/* <Props products={products} /> */}
-
-      {/* <NavBar /> */}
       <Context.Provider
-        value={{ state: state, AddToCart, increase, decrease, removeItem }}
+        value={{
+          state: state,
+          AddToCart,
+          increase,
+          decrease,
+          removeItem,
+          cartItemCount: cartItemCount,
+          cartItemTotalPrice: cartItemTotalPrice,
+        }}
       >
         <NavBar />
-       <List />
-
+        <List />
       </Context.Provider>
     </>
   );
