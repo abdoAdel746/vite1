@@ -36,7 +36,7 @@ export default function Nav() {
   return (
     <>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
-        <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+        <Flex h={16} alignItems={"center"} justifyContent={"space-between"} px={"3rem"}>
           <Box textTransform={"capitalize"} fontWeight={"bolder"}>
             shooping website
           </Box>
